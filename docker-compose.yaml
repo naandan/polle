@@ -1,0 +1,17 @@
+services:
+  app:
+    image: polle
+    container_name: polle
+    env_file:
+      - .env
+    ports:
+      - "8080:8070"
+    networks:
+      - polle-network
+      - mysql-network
+
+networks:
+  polle-network:
+    name: polle-network
+  mysql-network:
+    external: true

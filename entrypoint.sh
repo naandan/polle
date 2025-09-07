@@ -1,31 +1,31 @@
 #!/bin/bash
 set -e
 
-# Jalankan migrasi & seeding jika perlu
-# Perintah wajib untuk production Laravel
-echo "Menjalankan perintah Laravel production..."
+# Pastikan folder vendor ada
+mkdir -p /var/www/vendor
 
-# Generate cache konfigurasi
-php artisan config:cache
-
-# Generate cache route
-php artisan route:cache
-
-# Generate cache view
-php artisan view:cache
-
-# Jalankan migrasi dan seeder (opsional, tergantung kebutuhan)
-if [ "$RUN_MIGRATIONS" = "true" ]; then
-    echo "Menjalankan migrasi database..."
-    php artisan migrate --force
-    php artisan db:seed --force
+# Jalankan composer jika vendor kosong
+if [ ! -d "/var/www/vendor" ] || [ -z "$(ls -A /var/www/vendor)" ]; then
+    echo "Vendor folder tidak ada, menjalankan composer install..."
+    composer install --no-dev --optimize-autoloader --working-dir=/var/www
 fi
 
-# Bisa jalankan perintah tambahan
+echo "Menjalankan perintah Laravel production..."
+
+# Cache Laravel
+php /var/www/artisan config:cache
+php /var/www/artisan route:cache
+php /var/www/artisan view:cache
+
+# Jalankan migrasi jika diperlukan
+if [ "$RUN_MIGRATIONS" = "true" ]; then
+    php /var/www/artisan migrate --force
+fi
+
+# Jalankan custom command jika ada
 if [ ! -z "$CUSTOM_COMMAND" ]; then
-    echo "Menjalankan custom command: $CUSTOM_COMMAND"
     bash -c "$CUSTOM_COMMAND"
 fi
 
-# Start supervisord untuk menjalankan nginx + php-fpm
+# Start supervisord (root) untuk nginx + php-fpm
 exec supervisord -c /etc/supervisord.conf
