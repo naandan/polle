@@ -13,9 +13,13 @@ fi
 echo "Menjalankan perintah Laravel production..."
 
 # Cache Laravel
+php /var/www/artisan optimize
 php /var/www/artisan config:cache
+php /var/www/artisan event:cache
 php /var/www/artisan route:cache
 php /var/www/artisan view:cache
+
+php /var/www/artisan filament:optimize
 
 # Jalankan migrasi jika diperlukan
 if [ "$RUN_MIGRATIONS" = "true" ]; then
