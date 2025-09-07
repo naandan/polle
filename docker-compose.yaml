@@ -1,11 +1,11 @@
 services:
   app:
-    image: polle
+    image: ghcr.io/naandan/polle:main
     container_name: polle
     env_file:
       - .env
     ports:
-      - "8080:8070"
+      - "8082:8070"
     networks:
       - polle-network
       - mysql-network
