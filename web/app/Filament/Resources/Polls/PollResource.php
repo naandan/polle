@@ -17,6 +17,7 @@ use App\Filament\Resources\Polls\Schemas\PollForm;
 use App\Filament\Resources\Polls\Tables\PollsTable;
 use App\Filament\Resources\Polls\Schemas\PollInfolist;
 use App\Filament\Resources\Polls\RelationManagers\TokenRelationManager;
+use App\Filament\Resources\Polls\Pages\PollResults;
 
 class PollResource extends Resource
 {
@@ -64,6 +65,8 @@ class PollResource extends Resource
             'create' => CreatePoll::route('/create'),
             'view' => ViewPoll::route('/{record}'),
             'edit' => EditPoll::route('/{record}/edit'),
+
+            'results' => PollResults::route('/{record}/results')
         ];
     }
 }

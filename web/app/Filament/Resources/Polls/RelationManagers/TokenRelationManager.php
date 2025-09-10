@@ -26,12 +26,6 @@ class TokenRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                TextColumn::make('nomor')
-                    ->label('No')
-                    ->rowIndex()
-                    ->alignCenter()
-                    ->width('50px')
-                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('token')
                     ->label('Token')
                     ->copyable()
@@ -92,8 +86,7 @@ class TokenRelationManager extends RelationManager
                 ])
             ])
             ->recordActions([
-                DeleteAction::make()
-                    ->label('Hapus'),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 DeleteBulkAction::make(),

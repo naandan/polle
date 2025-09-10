@@ -2,16 +2,10 @@
 
 namespace App\Filament\Resources\Polls\Pages;
 
-use App\Models\Token;
-use Illuminate\Support\Str;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Filament\Infolists\Components\TextEntry;
 use App\Filament\Resources\Polls\PollResource;
-use Filament\Infolists\Components\RepeatableEntry;
 
 class ViewPoll extends ViewRecord
 {
@@ -21,6 +15,12 @@ class ViewPoll extends ViewRecord
     {
         return [
             EditAction::make()
+                ->icon('heroicon-o-pencil'),
+            Action::make('results')
+                ->label('Lihat Hasil')
+                ->url(fn () => route('filament.admin.resources.polls.results', $this->record))
+                ->icon('heroicon-o-chart-bar')
+                ->color('primary'),
         ];
     }
 }
