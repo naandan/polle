@@ -3,8 +3,6 @@
 namespace App\Filament\Resources\Polls\Tables;
 
 use Filament\Tables\Table;
-use Filament\Actions\EditAction;
-use Filament\Actions\ViewAction;
 use Filament\Support\Icons\Heroicon;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -45,8 +43,8 @@ class PollsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->emptyStateIcon(Heroicon::OutlinedChartBar)
-            ->emptyStateHeading('Belum ada data')
-            ->emptyStateDescription('Data belum tersedia. Silakan tambahkan data baru.')
+            ->emptyStateHeading('Belum ada polling')
+            ->emptyStateDescription('Polling belum tersedia. Silakan tambahkan polling baru.')
             ->filters([
                 //
             ])

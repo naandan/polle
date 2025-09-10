@@ -23,6 +23,10 @@ class PollResource extends Resource
 {
     protected static ?string $model = Poll::class;
 
+    protected static ?string $navigationLabel = 'Polling';
+    protected static ?string $pluralLabel = 'Polling';
+    protected static ?string $modelLabel = 'Polling';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedChartBar;
 
     protected static ?string $recordTitleAttribute = 'title';

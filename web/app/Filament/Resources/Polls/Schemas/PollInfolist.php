@@ -5,7 +5,6 @@ namespace App\Filament\Resources\Polls\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Components\RepeatableEntry;
 
 class PollInfolist
 {
@@ -34,17 +33,7 @@ class PollInfolist
 
                 TextEntry::make('created_at')
                     ->label('Dibuat pada')
-                    ->dateTime('d M Y H:i'),
-
-                RepeatableEntry::make('options')
-                    ->label('Opsi Voting')
-                    ->schema([
-                        TextEntry::make('text')
-                            ->label('Opsi'),
-                        TextEntry::make('votes_count')
-                            ->label('Jumlah Suara'),
-                    ])
-                    ->columns(2),
+                    ->dateTime('d M Y H:i')
             ]);
     }
 }

@@ -8,6 +8,7 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
+use Filament\Support\Icons\Heroicon;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -21,6 +22,11 @@ class TokenRelationManager extends RelationManager
 {
     protected static string $relationship = 'tokens';
     protected static ?string $title = 'Daftar Token';
+
+    public function isReadOnly(): bool
+    {
+        return false;
+    }
 
     public function table(Table $table): Table
     {
@@ -85,6 +91,9 @@ class TokenRelationManager extends RelationManager
                     ExcelExport::make('table')->fromTable(),
                 ])
             ])
+            ->emptyStateIcon(Heroicon::OutlinedKey)
+            ->emptyStateHeading('Belum ada token')
+            ->emptyStateDescription('Token belum tersedia. Silakan tambahkan token baru.')
             ->recordActions([
                 DeleteAction::make(),
             ])
