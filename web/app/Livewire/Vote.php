@@ -13,12 +13,23 @@ class Vote extends Component
 
     public function mount($token)
     {
-        $this->token = Token::with('poll.options')->where('token', $token)->firstOrFail();
+        $this->token = Token::with('poll.options')->where('token', $token)->first();
 
-        if ($this->token->used_at) {
-            abort(403, 'Token sudah digunakan.');
+        $poll = $this->token?->poll;
+        $now  = now();
+
+        if (
+            ! $this->token ||                         // token tidak ada
+            $this->token->used_at ||                  // token sudah dipakai
+            ! $poll ||                                // poll tidak ada
+            ($poll->start_at && $now->lt($poll->start_at)) || // belum mulai
+            ($poll->end_at && $now->gt($poll->end_at))        // sudah berakhir
+        ) {
+            abort(404);
         }
     }
+
+
 
     public function submit()
     {
@@ -41,7 +52,7 @@ class Vote extends Component
 
         $this->token->update(['used_at' => now()]);
 
-        return redirect()->route('voter.login')->with('success', 'Vote berhasil disimpan.');
+        return redirect()->route('voter.success', ["token" => $this->token->token]);
     }
 
     public function render()

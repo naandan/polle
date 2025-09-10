@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
-    <div class="w-full max-w-sm p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700">
+    <div class="w-full max-w-lg p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700">
         <div class="text-center mb-6">
             <div class="flex justify-center mb-4">
                 <svg class="w-16 h-16 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +15,7 @@
                 <label for="token" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Token Vote</label>
                 <input type="text" id="token" wire:model="token"
                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white placeholder-gray-400"
-                    placeholder="Contoh: ABCD-1234" />
+                    placeholder="Contoh: NAKVWR5W" />
                 @error('token') <p class="text-red-500 text-sm mt-2">{{ $message }}</p> @enderror
             </div>
 
