@@ -3,10 +3,9 @@
 namespace App\Filament\Resources\Polls\Pages;
 
 use App\Filament\Resources\Polls\PollResource;
-use App\Filament\Widgets\PercentChart;
-use App\Filament\Widgets\ResultChart;
-use App\Filament\Widgets\StatsOverview;
-use App\Filament\Widgets\UsageChart;
+use App\Livewire\StatsOverview;
+use App\Livewire\ResultChart;
+use App\Livewire\PercentChart;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Resources\Pages\Page;
 

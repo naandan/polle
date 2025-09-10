@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Filament\Widgets;
+namespace App\Livewire;
 
-use App\Models\Poll;
 use Filament\Widgets\ChartWidget;
 
 class ResultChart extends ChartWidget
