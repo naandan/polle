@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.app :title="$seo['title']" :seo="$seo">
     <div class="max-w-4xl mx-auto px-6 py-12 text-gray-800 dark:text-gray-200 leading-relaxed">
         <h1 class="text-3xl font-bold mb-6 text-center">Syarat & Ketentuan</h1>
 

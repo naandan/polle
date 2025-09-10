@@ -1,4 +1,4 @@
-<div>
+<x-layouts.app :title="$seo['title']" :seo="$seo">
     <header class="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-800 dark:to-blue-950 text-white py-16 sm:py-24 md:py-32" data-aos="fade-up">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4" data-aos="zoom-in">
@@ -70,4 +70,4 @@
             </a>
         </section>
     </main>
-</div>
+</x-layouts.app>

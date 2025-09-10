@@ -19,6 +19,7 @@ php artisan route:cache
 php artisan view:cache
 php artisan livewire:publish --assets
 php artisan filament:optimize
+php artisan sitemap:generate
 
 echo "Menjalankan Nginx + PHP-FPM via supervisord..."
 exec supervisord -c /etc/supervisord.conf
